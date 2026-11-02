@@ -13,6 +13,10 @@ import '../l10n/l10n.dart';
 // This fork's releases (ABSssh). Upstream is Jhongdlp/Kammel_ssh.
 const String _kRepo = 'samur005/Kammel_ssh';
 
+/// Neoplayer fork: the in-app updater is switched off. New versions are
+/// built and installed by hand from this fork, never pulled from upstream.
+const bool kUpdatesEnabled = false;
+
 /// Metadata about a release that is newer than the installed build.
 class AppUpdate {
   /// Human-facing version name, e.g. "1.0.1" (the release tag without a leading
@@ -39,6 +43,7 @@ class UpdateService {
   /// Returns an [AppUpdate] when the latest GitHub release is newer than the
   /// running build, or `null` when up to date or on any failure.
   static Future<AppUpdate?> checkForUpdate() async {
+    if (!kUpdatesEnabled) return null;
     try {
       final info = await PackageInfo.fromPlatform();
       final current = info.version; // versionName, e.g. "1.0.0"
@@ -85,6 +90,7 @@ class UpdateService {
     AppUpdate update, {
     void Function(double progress)? onProgress,
   }) async {
+    if (!kUpdatesEnabled) return 'updates disabled';
     final client = http.Client();
     try {
       final req = http.Request('GET', Uri.parse(update.apkUrl));

@@ -34,9 +34,10 @@ android {
     }
 
     defaultConfig {
-        // Kept unchanged across the rebrand so this build updates the installed
-        // app in place (same signing key required — see android/key.properties).
-        applicationId = "com.antigravity.terminalagent.terminal_agent"
+        // Neoplayer fork: own ID, so it installs next to upstream ABSssh and
+        // only APKs signed with the fork's own key (android/key.properties)
+        // can update it.
+        applicationId = "com.neoplayer.absssh"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

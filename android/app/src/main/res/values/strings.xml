@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">ABSssh</string>
+    <string name="app_name" translatable="false">ABSssh N</string>
     <string name="fg_title">ABSssh is running</string>
     <string name="fg_text">Sessions keep running in the background</string>
     <string name="fg_text_wakelock">Wakelock on · tasks continue with the screen off</string>

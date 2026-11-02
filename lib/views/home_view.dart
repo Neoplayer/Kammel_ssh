@@ -98,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     // Silent, best-effort update check against GitHub Releases after the first
     // frame; only surfaces a dialog when a newer APK actually exists.
-    if (!_updateChecked) {
+    if (kUpdatesEnabled && !_updateChecked) {
       _updateChecked = true;
       WidgetsBinding.instance.addPostFrameCallback((_) => _checkForUpdate());
     }

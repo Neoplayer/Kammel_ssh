@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Network access for SSH connections and the in-app updater. Flutter only
          injects this automatically in debug builds; release APKs need it here. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -9,10 +10,10 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Required on Android 13+ to show the persistent foreground notification. -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- In-app updater: download the latest APK from GitHub Releases and hand it
-         to the system package installer (see lib/services/update_service.dart).
-         The user still confirms the install in the system dialog. -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Neoplayer fork: the in-app updater is disabled, so the app may not
+         install packages at all. tools:node="remove" also strips the permission
+         if a plugin manifest declares it. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
     <!-- Voice dictation in the prompt composer (speech_to_text plugin). -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Shared-storage access (targetSdk 28 legacy permissions grant the whole
